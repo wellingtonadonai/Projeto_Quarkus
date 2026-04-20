@@ -6,18 +6,27 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+
 @Path("starwars")
 @Produces(MediaType.APPLICATION_JSON)
 public class StarWarsResource {
 
+
     @RestClient
     StarWarsService service;
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("vehicles")
+    public String getvehicles(){
+        return service.getvehicles();
+    }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("starships")
     public String getstarships(){
-        return service.getstarships();
-
+        return getstarships();
     }
+
 }
